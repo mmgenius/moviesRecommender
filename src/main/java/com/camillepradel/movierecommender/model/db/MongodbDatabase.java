@@ -3,21 +3,39 @@ package com.camillepradel.movierecommender.model.db;
 import com.camillepradel.movierecommender.model.Genre;
 import com.camillepradel.movierecommender.model.Movie;
 import com.camillepradel.movierecommender.model.Rating;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 
+import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-public class MongodbDatabase extends AbstractDatabase {
 
-    Connection connection = null;
+
+public class MongodbDatabase extends AbstractDatabase {
+	
+	public static void main(String[] args) {
+		MongodbDatabase db = new MongodbDatabase();
+		System.out.println("hello");
+	}
+	
+	MongoClient mongoClient = null;
+    public MongodbDatabase() {
+		super();
+		try {
+			MongoClient mongoClient = new MongoClient(new MongoClientURI(url));
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	Connection connection = null;
 
     // db connection info
-    String url = "jdbc:mysql://localhost:27017/Movie_Lens"
-            + "?zeroDateTimeBehavior=convertToNull&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    String login = "root";
-    String password = "";
+    String url = "mongodb://localhost:27017";
 	
     @Override
     public List<Movie> getAllMovies() {
