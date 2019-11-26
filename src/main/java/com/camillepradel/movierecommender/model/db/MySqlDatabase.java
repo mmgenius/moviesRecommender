@@ -23,8 +23,8 @@ public class MySqlDatabase extends AbstractDatabase {
     // db connection info
     String url = "jdbc:mysql://localhost:3306/movie_recommender"
             + "?zeroDateTimeBehavior=convertToNull&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    String login = "admin";
-    String password = "Q86PhnJRiEa7";
+    String login = "root";
+    String password = "";
 
     public MySqlDatabase() {
         // load JDBC driver

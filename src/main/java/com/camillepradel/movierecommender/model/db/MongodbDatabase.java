@@ -3,12 +3,22 @@ package com.camillepradel.movierecommender.model.db;
 import com.camillepradel.movierecommender.model.Genre;
 import com.camillepradel.movierecommender.model.Movie;
 import com.camillepradel.movierecommender.model.Rating;
+
+import java.sql.Connection;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 public class MongodbDatabase extends AbstractDatabase {
 
+    Connection connection = null;
+
+    // db connection info
+    String url = "jdbc:mysql://localhost:27017/Movie_Lens"
+            + "?zeroDateTimeBehavior=convertToNull&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    String login = "root";
+    String password = "";
+	
     @Override
     public List<Movie> getAllMovies() {
         // TODO: write query to retrieve all movies from DB
